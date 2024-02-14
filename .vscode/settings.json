@@ -1,5 +1,8 @@
 {
-  "cSpell.words": ["uvicorn"],
+  "cSpell.words": [
+    "pydantic",
+    "uvicorn"
+  ],
   "editor.defaultFormatter": "ms-python.black-formatter",
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoImportCompletions": true
