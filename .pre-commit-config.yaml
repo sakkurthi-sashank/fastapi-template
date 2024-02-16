@@ -1,0 +1,24 @@
+repos:
+-   repo: local
+    hooks:
+    -   id: add-new-requirements-txt
+        name: Add new requirements to requirements.txt file
+        entry: "python -c \"import os; os.system('touch requirements.txt'); os.system('pip freeze > requirements.txt')\""
+        language: system
+        types: [file]
+        files: requirements.txt
+        pass_filenames: false
+        always_run: true
+        verbose: true
+
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: requirements-txt-fixer
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+    -   id: black
