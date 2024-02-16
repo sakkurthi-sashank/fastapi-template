@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, TIMESTAMP, text
+from sqlalchemy import Column, String, TIMESTAMP, text, UUID
 from sqlalchemy.sql import func
 from ..config.db import Base
 
@@ -9,8 +9,8 @@ class Users(Base):
 
     id = Column(
         "id",
-        String,
-        default=text("gen_random_uuid()"),
+        UUID(as_uuid=True),
+        server_default=text("gen_random_uuid()"),
         primary_key=True,
         unique=True,
         nullable=False,
@@ -22,11 +22,11 @@ class Users(Base):
     update_at = Column(
         "updated_at",
         TIMESTAMP(timezone=True),
-        default=text("now()"),
-        onupdate=text("now()"),
+        server_default=text("now()"),
+        onupdate=func.now(),
     )
     created_at = Column(
         "created_at",
         TIMESTAMP(timezone=True),
-        default=text("now()"),
+        server_default=text("now()"),
     )
